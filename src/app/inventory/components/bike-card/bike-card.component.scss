@@ -1,0 +1,43 @@
+mat-card {
+    width: 250px;
+    height: 400px;
+    margin-bottom: 1rem;
+    box-shadow:
+        0 2px 4px -1px rgba(0, 0, 0, 0.2),
+        0 4px 5px 0 rgba(0, 0, 0, 0.14),
+        0 1px 10px 0 rgba(0, 0, 0, 0.12);
+    background: #eaf2f6;
+
+    img {
+        height: 50%;
+    }
+
+    .bike-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .bike-name {
+        font-size: 24px;
+        font-weight: 500;
+        margin: 0.5rem 0;
+    }
+
+    .star {
+        font-size: 24px;
+        color: #056c86;
+    }
+
+    .info-title {
+        font-weight: 500;
+        color: #056c86;
+        line-height: 24px;
+    }
+
+    .mdc-card__actions {
+        bottom: 0;
+        right: 0;
+        position: absolute;
+    }
+}

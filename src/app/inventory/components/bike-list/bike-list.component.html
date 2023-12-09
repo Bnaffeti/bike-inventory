@@ -1,0 +1,27 @@
+<section>
+    <div class="bike-list-container">
+        <div class="bike-list-content">
+            <!-- Actions: Search + Create new Bike -->
+            <div class="bike-list-actions">
+                <mat-form-field class="search-input" appearance="outline">
+                    <mat-label>Find a bike</mat-label>
+                    <input matInput [(ngModel)]="searchValue">
+                    <mat-icon class="material-icons-outlined" color="primary" matSuffix>search</mat-icon>
+                </mat-form-field>
+                <button mat-raised-button color="primary" routerLink="/inventory/bike">
+                    <span>CREATE NEW BIKE</span>
+                </button>
+            </div>
+
+            <!-- BIKE CARDS -->
+            <div class="bike-list">
+                <app-bike-card
+                    *ngFor="let bike of (bikeList$|async)"
+                    [bike]="bike"
+                    (onViewBike)="onViewBike($event)"
+                    (onRemoveBike)="onRemoveBike($event)">
+                </app-bike-card >
+            </div>
+        </div>
+    </div>
+</section>

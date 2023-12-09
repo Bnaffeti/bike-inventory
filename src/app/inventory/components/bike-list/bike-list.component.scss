@@ -1,0 +1,22 @@
+.bike-list-container {
+    .bike-list-content {
+        .bike-list-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-right: 1rem;
+
+            .search-input {
+                width: 400px;
+            }
+        }
+
+        .bike-list {
+            height: calc(100vh - 165px);
+            overflow-y: auto;
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            gap: 30px;
+        }
+    }
+}

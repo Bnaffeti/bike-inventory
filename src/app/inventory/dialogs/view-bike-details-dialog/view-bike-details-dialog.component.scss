@@ -1,0 +1,27 @@
+.dialog-content {
+  display: flex;
+  align-items: start;
+  gap: 20px;
+
+  .image-section {
+    flex: 1;
+    max-width: 300px;
+  }
+
+  .bike-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  .details-section {
+    flex: 2;
+
+    h2 {
+      margin-bottom: 1rem;
+    }
+    p {
+      line-height: 2;
+    }
+  }
+}
