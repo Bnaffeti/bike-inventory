@@ -10,6 +10,10 @@ import * as fromStore from '../../store';
 import { Subscription, take } from 'rxjs';
 import { InventoryService } from '../../services/inventory.service';
 
+/**
+ * A component to crerate or edit a bike
+ * @author Bnaffeti
+ */
 @Component({
   selector: 'app-bike',
   standalone: true,
@@ -29,6 +33,8 @@ export class BikeComponent implements OnDestroy {
     private inventoryService: InventoryService,
     private route: ActivatedRoute,
     private location: Location) {
+
+    // Create and initiate the bike form
     this.bikeForm = this.formBuilder.group({
       id: [null],
       name: ['', Validators.required],
@@ -46,7 +52,7 @@ export class BikeComponent implements OnDestroy {
     // If we have and id in the URL so we are in the edit mode
     const bikeId = Number(this.route.snapshot.queryParams['id']);
     if (bikeId) {
-      // get the bike by id and initiate the form
+      // get the bike by id and initiate the form by the bike data
       this.subscription.add(
         this.inventoryService.getBikeById(bikeId)
           .pipe(take(1))
@@ -66,7 +72,7 @@ export class BikeComponent implements OnDestroy {
     if (this.bikeForm.valid) {
       const bike: Bike = this.bikeForm.value;
       // Edit a bike or create a new bike
-      if (bike.id) {
+      if (bike?.id) {
         this.subscription.add(
           this.store$.dispatch(fromStore.editBike({ bike }))
         );

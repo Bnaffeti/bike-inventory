@@ -7,7 +7,10 @@ import { Bike } from "../../models/bike";
 import { map, switchMap, take } from "rxjs";
 import { ExchangeService } from "../../services/exchange.service";
 
-
+/**
+ * A dialog component to display a bike details and convert the price to other currencies
+ * @author Bnaffeti
+ */
 @Component({
   selector: 'app-view-bike-details-dialog',
   standalone: true,
@@ -23,6 +26,8 @@ export class ViewBikeDetailsDialogComponent {
     private inventoryService: InventoryService,
     private exchangeService: ExchangeService) {
 
+    // Get bike by id
+    // Get the live exchenge currencies rates to display the price in EUR ans CAD
     this.inventoryService.getBikeById(data.bikeId)
       .pipe(
         switchMap(bike => {

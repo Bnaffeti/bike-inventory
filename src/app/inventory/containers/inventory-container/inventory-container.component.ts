@@ -3,6 +3,11 @@ import { Store } from '@ngrx/store';
 import * as fromStore from '../../store';
 import { Subscription } from 'rxjs';
 
+/**
+ * The Inventory container component, to handel the module childrens redirections, initialisations, actions,
+ * and diplay common UI or components of the module
+ * @author Bnaffeti
+ */
 @Component({
   selector: 'app-inventory-container',
   templateUrl: './inventory-container.component.html',

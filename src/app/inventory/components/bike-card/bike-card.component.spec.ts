@@ -24,7 +24,6 @@ describe('BikeCardComponent', () => {
     fixture = TestBed.createComponent(BikeCardComponent);
     component = fixture.componentInstance;
 
-    // Mock bike data
     mockBike = {
       id: 1,
       name: 'Test Bike',

@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
 
-  // Backend Urls
+  // mocked back end Urls
   getAllBikesUrl: 'api/bikes',
   getBikeByIdUrl: 'api/bikes/:id',
   addBikeUrl: 'api/bikes',

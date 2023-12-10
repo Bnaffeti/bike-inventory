@@ -1,7 +1,7 @@
 <section>
     <div class="bike-list-container">
         <div class="bike-list-content">
-            <!-- Actions: Search + Create new Bike -->
+            <!-- Actions: create new Bike + search -->
             <div class="bike-list-actions">
                 <button mat-raised-button color="primary" routerLink="/inventory/bike">
                     <span>CREATE NEW BIKE</span>
@@ -13,7 +13,7 @@
                 </mat-form-field>
             </div>
 
-            <!-- BIKE CARDS -->
+            <!-- List of bike card -->
             <div class="bike-list">
                 <app-bike-card
                     *ngFor="let bike of (bikeList$|async)"

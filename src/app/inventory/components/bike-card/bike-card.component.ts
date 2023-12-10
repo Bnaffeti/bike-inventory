@@ -6,6 +6,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { Bike } from '../../models/bike';
 
+/**
+ * A Component to dislay bike info in a mat-card
+ * @author Bnaffeti
+ */
 @Component({
   selector: 'app-bike-card',
   standalone: true,

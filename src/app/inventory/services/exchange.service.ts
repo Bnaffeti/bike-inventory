@@ -10,6 +10,10 @@ export class ExchangeService {
 
     constructor(private http: HttpClient) { }
 
+    /**
+     * External API to get live echanges currencies rates based on USD
+     * @returns rates
+     */
     getRates(): Observable<any> {
         return this.http.get<any>(
             `${environment.exchangeRatesUrl}`)
