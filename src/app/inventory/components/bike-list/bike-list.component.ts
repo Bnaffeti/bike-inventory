@@ -13,11 +13,15 @@ import { ViewBikeDetailsDialogComponent } from '../../dialogs/view-bike-details-
 import { BikeCardComponent } from '../bike-card/bike-card.component';
 import { RouterLink } from '@angular/router';
 
+/**
+ * A component to list bikes
+ * @author Bnaffeti
+ */
 @Component({
   selector: 'app-bike-list',
   standalone: true,
   imports: [CommonModule, BikeCardComponent, FormsModule, MatInputModule,
-     MatButtonModule, MatDialogModule, MatIconModule, RouterLink],
+    MatButtonModule, MatDialogModule, MatIconModule, RouterLink],
   templateUrl: './bike-list.component.html',
   styleUrls: ['./bike-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -46,9 +50,10 @@ export class BikeListComponent implements OnDestroy {
   }
 
   onRemoveBike(bikeId: number) {
-    this.subscription.add(
-      this.store$.dispatch(fromStore.deleteBike({ bikeId }))
-    );
+    if (bikeId) {
+      this.subscription.add(
+        this.store$.dispatch(fromStore.deleteBike({ bikeId }))
+      );
+    }
   }
-
 }
