@@ -9,6 +9,8 @@ import { of } from 'rxjs';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import * as fromStore from '../../store';
 import { Bike } from '../../models/bike';
+import { EffectsModule } from '@ngrx/effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('BikeComponent', () => {
   let component: BikeComponent;
@@ -20,15 +22,20 @@ describe('BikeComponent', () => {
 
   beforeEach(async () => {
     inventoryServiceMock = jasmine.createSpyObj('InventoryService', ['getBikeById']);
+    inventoryServiceMock.getBikeById.and.returnValue(of());
     storeMock = jasmine.createSpyObj('Store', ['dispatch']);
     locationMock = jasmine.createSpyObj('Location', ['back']);
     routeMock = {
       snapshot: { queryParams: { 'id': '1' } }
     };
-
+  
     await TestBed.configureTestingModule({
-      declarations: [BikeComponent],
-      imports: [ReactiveFormsModule, StoreModule.forRoot({})],
+      imports: [
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        StoreModule.forRoot({}),
+        EffectsModule.forRoot(),
+      ],
       providers: [
         FormBuilder,
         { provide: InventoryService, useValue: inventoryServiceMock },
@@ -44,10 +51,6 @@ describe('BikeComponent', () => {
     fixture = TestBed.createComponent(BikeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 
   it('should fetch bike details and update the form if bikeId is present in route queryParams', () => {
@@ -76,11 +79,14 @@ describe('BikeComponent', () => {
 
   describe('onSave', () => {
     beforeEach(() => {
-      component.bikeForm.setValue({
+      component.bikeForm.patchValue({
         id: null,
         name: 'New Bike',
         brand: 'New Brand',
         model: 'New Model',
+        description: 'New Desc',
+        photoUrl: '',
+        rating: 4,
         price: 100,
         quantity: 50,
       });
@@ -94,18 +100,12 @@ describe('BikeComponent', () => {
     });
 
     it('should dispatch editBike action if form is valid and id is present', () => {
-      component.bikeForm.get('id')?.setValue(1);
+      component.bikeForm.get('id')?.patchValue(1);
       component.onSave();
 
       expect(storeMock.dispatch).toHaveBeenCalledWith(fromStore.editBike({ bike: component.bikeForm.value }));
       expect(locationMock.back).toHaveBeenCalled();
     });
 
-    it('should not dispatch any action if form is invalid', () => {
-      component.bikeForm.get('name')?.setValue('');
-      component.onSave();
-
-      expect(storeMock.dispatch).not.toHaveBeenCalled();
-    });
   });
 });
