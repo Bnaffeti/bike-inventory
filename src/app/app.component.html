@@ -1,0 +1,22 @@
+<main class="app-container">
+  <!-- Sidebar Start -->
+  <div class="sidebar">
+    <div class="navbar">
+      <a
+        routerLink="/inventory"
+        routerLinkActive="active">
+        <mat-icon class="material-icons-outlined">inventory</mat-icon>
+        <span>Inventory</span>
+      </a>
+      <a
+        routerLink="/sales"
+        routerLinkActive="active">
+        <mat-icon class="material-icons-outlined">monetization_on</mat-icon>
+        <span>Sales</span>
+      </a>
+    </div>
+  </div>
+  <section class="app-content">
+    <router-outlet></router-outlet>
+  </section>
+</main>

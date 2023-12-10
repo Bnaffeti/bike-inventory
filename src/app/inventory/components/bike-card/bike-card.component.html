@@ -1,0 +1,41 @@
+<mat-card *ngIf="bike">
+    <img mat-card-image src="../../../../assets/images/bike_{{ bike.id % 10 + 1}}.png">
+    <mat-card-content>
+        <div class="bike-title">
+            <span class="bike-name">{{bike.name}}</span>
+            <div class="bike-title">
+                {{bike.rating}}
+                <mat-icon class="material-icons-outlined star">star</mat-icon>
+            </div>
+        </div>
+        <div class="bike-info">
+            <div> <span class="info-title">Brand:</span> {{bike.brand}}</div>
+            <div> <span class="info-title">Model:</span> {{bike.model}}</div>
+            <div> <span class="info-title">Qty:</span> {{bike.quantity}}</div>
+            <div> <span class="info-title">Price:</span> ${{bike.price}}</div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button
+            mat-icon-button
+            color="primary"
+            (click)="onDetails(bike.id)">
+            <mat-icon color="primary">visibility</mat-icon>
+        </button>
+        <button 
+            mat-icon-button
+            class="details-button"
+            color="primary"
+            routerLink="/inventory/bike"
+            [queryParams]="{ id: bike.id }">
+            <mat-icon class="material-icons-outlined" color="primary">edit</mat-icon>
+        </button>
+        <button 
+            mat-icon-button
+            color="primary"
+            class="remove-button"
+            (click)="onRemove(bike.id)">
+            <mat-icon color="warn">delete</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>

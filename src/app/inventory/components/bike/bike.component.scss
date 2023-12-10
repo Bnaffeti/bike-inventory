@@ -1,0 +1,20 @@
+.title {
+    color: #056c86;
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates two columns */
+    grid-gap: 2rem;
+    & > div .mat-mdc-form-field {
+        width: 100%;
+    }
+}
+
+.save-btn {
+    float: right;
+    margin-left: 1rem;
+}

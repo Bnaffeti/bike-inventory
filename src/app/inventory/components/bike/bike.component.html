@@ -1,0 +1,58 @@
+<div class="title"> Creating a new bike: </div>
+<form [formGroup]="bikeForm">
+    <div class="form-grid">
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name">
+                <mat-error *ngIf="bikeForm.get('name')?.hasError('required')">Required field</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Brand</mat-label>
+                <input matInput formControlName="brand">
+                <mat-error *ngIf="bikeForm.get('brand')?.hasError('required')">Required field</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Model</mat-label>
+                <input matInput formControlName="model">
+                <mat-error *ngIf="bikeForm.get('model')?.hasError('required')">Required field</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Rating</mat-label>
+                <input matInput type="number" formControlName="rating">
+                <mat-error *ngIf="bikeForm.get('rating')?.hasError('required')">Required field</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Price</mat-label>
+                <input matInput type="number" formControlName="price">
+                <mat-error *ngIf="bikeForm.get('price')?.hasError('required')">Required field</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Quantity</mat-label>
+                <input matInput type="number" formControlName="quantity">
+                <mat-error *ngIf="bikeForm.get('quantity')?.hasError('required')">Required field</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <button
+        mat-raised-button
+        color="primary"
+        class="save-btn"
+        (click)="onSave()">Save Bike</button>
+    <button
+        type="button"
+        mat-stroked-button
+        color="warn"
+        class="save-btn"
+        routerLink="/inventory">Cancel</button>
+</form>
